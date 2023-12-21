@@ -2,35 +2,37 @@ import { useState } from "react";
 import "./GameBoard.css";
 
 const initialGameBoard = [
-	["select", "select", "select"],
-	["select", "select", "select"],
-	["select", "select", "select"],
+	["-", "-", "-"],
+	["-", "-", "-"],
+	["-", "-", "-"],
 ];
 
-export default function GameBoard() {
+export default function GameBoard({ squareOnSelect, symbolPlayer }) {
 	const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
 	function selectSquareHandle(rowIndex, columnIndex) {
 		setGameBoard((prevGameBoard) => {
 			const copyGameBoard = [...prevGameBoard.map((row) => [...row])];
-			copyGameBoard[rowIndex][columnIndex] = "X";
+			copyGameBoard[rowIndex][columnIndex] = symbolPlayer;
 			return copyGameBoard;
 		});
+
+		squareOnSelect();
 	}
 
 	return (
-		<ol id="top-ol">
+		<div id="game-area">
 			{gameBoard.map((row, rowIndex) => (
-				<li key={rowIndex}>
-					<ol>
-						{row.map((column, columnIndex) => (
-							<li key={columnIndex}>
-								<button onClick={() => selectSquareHandle(rowIndex, columnIndex)}>{column}</button>
-							</li>
-						))}
-					</ol>
-				</li>
+				<div key={rowIndex} id="row">
+					{row.map((column, columnIndex) => (
+						<div key={columnIndex}>
+							<button onClick={() => selectSquareHandle(rowIndex, columnIndex)} id="game-button">
+								{column}
+							</button>
+						</div>
+					))}
+				</div>
 			))}
-		</ol>
+		</div>
 	);
 }

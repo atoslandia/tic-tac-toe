@@ -1,7 +1,7 @@
 import "./Player.css";
 import { useState } from "react";
 
-export default function Player({ initialName, symbol }) {
+export default function Player({ initialName, symbol, isTurn }) {
 	const [playerName, setPlayerName] = useState(initialName);
 	const [isEditing, setIsEditing] = useState(false);
 
@@ -25,7 +25,7 @@ export default function Player({ initialName, symbol }) {
 	}
 
 	return (
-		<div id="player">
+		<div id="player" className={isTurn ? "turn" : undefined}>
 			{buttonCaption}
 			{nameTitle}
 			<img src={symbol} />

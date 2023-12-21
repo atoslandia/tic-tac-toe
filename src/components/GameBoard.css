@@ -1,9 +1,14 @@
-#top-ol li {
+#game-area {
 	display: flex;
 	flex-direction: column;
+	margin: 1rem;
 }
 
-#top-ol li ol {
+#game-area #row {
 	display: flex;
-	flex-direction: row;
+}
+
+#game-button {
+	width: 3rem;
+	height: 3rem;
 }

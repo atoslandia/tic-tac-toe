@@ -1,9 +1,15 @@
 #player {
 	display: flex;
 	align-items: center;
+	margin-top: 1rem;
 }
 
 #player h1,
 button {
 	margin: 0 1rem;
+}
+
+.turn {
+	border-style: dashed;
+	border-color: cadetblue;
 }
