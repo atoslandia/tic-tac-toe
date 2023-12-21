@@ -1,0 +1,9 @@
+#player {
+	display: flex;
+	align-items: center;
+}
+
+#player h1,
+button {
+	margin: 0 1rem;
+}
