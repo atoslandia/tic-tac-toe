@@ -6,3 +6,8 @@ img {
 	display: flex;
 	justify-content: center;
 }
+
+#game-board {
+	display: flex;
+	justify-content: center;
+}

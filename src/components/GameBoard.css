@@ -1,0 +1,9 @@
+#top-ol li {
+	display: flex;
+	flex-direction: column;
+}
+
+#top-ol li ol {
+	display: flex;
+	flex-direction: row;
+}
