@@ -1,5 +1,5 @@
 img {
-	width: 5rem;
+	width: 3rem;
 }
 
 #players {
@@ -9,5 +9,6 @@ img {
 
 #game-board {
 	display: flex;
-	justify-content: center;
+	flex-direction: column;
+	align-items: center;
 }

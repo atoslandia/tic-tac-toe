@@ -4,12 +4,20 @@
 	margin-top: 1rem;
 }
 
-#player h1,
-button {
+#player h3 {
 	margin: 0 1rem;
 }
 
+#player button {
+	margin-right: 0.5rem;
+}
+#player img {
+	margin: 0.3rem;
+}
+
 .turn {
-	border-style: dashed;
-	border-color: cadetblue;
+	border: 0.3rem;
+	border-style: solid;
+	border-radius: 1rem;
+	border-color: black;
 }

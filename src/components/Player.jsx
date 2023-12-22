@@ -12,7 +12,7 @@ export default function Player({ initialName, symbol, isTurn }) {
 		setIsEditing(false);
 	}
 
-	let nameTitle = <h1>{playerName}</h1>;
+	let nameTitle = <h3>{playerName}</h3>;
 	let buttonCaption = <button onClick={() => editOnClick()}>Edit</button>;
 
 	function onChange(event) {
@@ -26,9 +26,9 @@ export default function Player({ initialName, symbol, isTurn }) {
 
 	return (
 		<div id="player" className={isTurn ? "turn" : undefined}>
-			{buttonCaption}
-			{nameTitle}
 			<img src={symbol} />
+			{nameTitle}
+			{buttonCaption}
 		</div>
 	);
 }
