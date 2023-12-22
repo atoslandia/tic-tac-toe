@@ -8,6 +8,7 @@ import { useState } from "react";
 import Log from "./components/Log";
 
 import { WINNING_COMBINATIONS } from "./winning-combinations";
+import GameOver from "./components/GameOver";
 
 const initialGameBoard = [
 	[null, null, null],
@@ -26,7 +27,7 @@ function deriveTurnPlayer(gameTurn) {
 }
 
 function App() {
-	const [gameTurns, setLogTurns] = useState([]);
+	const [gameTurns, setGameTurns] = useState([]);
 
 	const activePlayer = deriveTurnPlayer(gameTurns);
 
@@ -52,7 +53,7 @@ function App() {
 	}
 
 	function selectSquareHandle(rowIndex, columnIndex) {
-		setLogTurns((prevTurns) => {
+		setGameTurns((prevTurns) => {
 			let currentPlayer = deriveTurnPlayer(prevTurns);
 
 			const copyLogTurns = [{ square: { row: rowIndex, column: columnIndex }, player: currentPlayer }, ...prevTurns];
@@ -60,6 +61,13 @@ function App() {
 			return copyLogTurns;
 		});
 	}
+
+	function rematchHandle() {
+		setGameTurns([]);
+		winner = null;
+	}
+
+	const noWinner = gameTurns.length === 9 && !winner;
 
 	return (
 		<>
@@ -69,17 +77,13 @@ function App() {
 					<Player initialName={"Player two"} symbol={circleIcon} isTurn={activePlayer === circleIcon} />
 				</div>
 				<div id="game-board">
-					{winner ? (
-						<>
-							<img src={winner} />
-							<h1>Venceu!</h1>
-						</>
+					{winner || noWinner ? (
+						<GameOver winner={winner} onClick={rematchHandle} />
 					) : (
 						<GameBoard squareOnSelect={selectSquareHandle} board={gameBoard} />
 					)}
-
-					<Log turns={gameTurns} />
 				</div>
+				<Log turns={gameTurns} />
 			</main>
 		</>
 	);

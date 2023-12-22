@@ -14,7 +14,7 @@ export default function GameBoard({ squareOnSelect, board }) {
 									onClick={() => squareOnSelect(rowIndex, columnIndex)}
 									disabled={column !== null}
 									id="game-button">
-									<img src={column} id="icon" />
+									<img src={column} className="icon" />
 								</button>
 							</div>
 						))}

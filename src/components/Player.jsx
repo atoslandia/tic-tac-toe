@@ -26,9 +26,12 @@ export default function Player({ initialName, symbol, isTurn }) {
 
 	return (
 		<div id="player" className={isTurn ? "turn" : undefined}>
-			<img src={symbol} />
-			{nameTitle}
-			{buttonCaption}
+			<div>
+				<img src={symbol} />
+				{nameTitle}
+				{buttonCaption}
+			</div>
+			{isTurn && <p>(You turn)</p>}
 		</div>
 	);
 }

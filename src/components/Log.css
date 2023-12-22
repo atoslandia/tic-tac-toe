@@ -1,3 +1,12 @@
 #log-icon {
 	width: 0.7rem;
 }
+
+ol {
+	list-style-type: none;
+	margin-left: -1.5rem;
+}
+
+li {
+	animation: slide-in-from-left 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}

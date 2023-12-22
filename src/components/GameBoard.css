@@ -9,15 +9,6 @@
 	left: 0.3rem;
 }
 
-#game-board-img {
-	width: 15rem;
-	height: 15rem;
-}
-
-#game-area #row {
-	display: flex;
-}
-
 #game-button {
 	border: none;
 	background: none;
@@ -27,6 +18,24 @@
 	height: 4rem;
 }
 
-#icon {
+#game-board-img {
+	width: 15rem;
+	height: 15rem;
+}
+
+#game-area #row {
+	display: flex;
+}
+
+.icon {
 	width: 2rem;
+}
+
+@keyframes surge {
+	0% {
+		transform: scale(0%);
+	}
+	100% {
+		transform: scale(100%);
+	}
 }

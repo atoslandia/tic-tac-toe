@@ -1,23 +1,19 @@
 #player {
 	display: flex;
+	flex-direction: column;
 	align-items: center;
-	margin-top: 1rem;
+	padding: 0.7rem;
 }
 
-#player h3 {
-	margin: 0 1rem;
+#player div {
+	display: flex;
 }
-
-#player button {
-	margin-right: 0.5rem;
-}
-#player img {
-	margin: 0.3rem;
+#player div h3,
+input {
+	margin: 0 0.5rem;
 }
 
 .turn {
-	border: 0.3rem;
-	border-style: solid;
 	border-radius: 1rem;
-	border-color: black;
+	background-color: rgb(240, 240, 240);
 }
