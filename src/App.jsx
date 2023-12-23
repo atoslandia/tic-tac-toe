@@ -26,20 +26,7 @@ function deriveTurnPlayer(gameTurn) {
 	return currentPlayer;
 }
 
-function App() {
-	const [gameTurns, setGameTurns] = useState([]);
-
-	const activePlayer = deriveTurnPlayer(gameTurns);
-
-	let gameBoard = initialGameBoard;
-
-	for (const turn of gameTurns) {
-		const { square, player } = turn;
-		const { row, column } = square;
-
-		gameBoard[row][column] = player;
-	}
-
+function winnerDerive(gameBoard) {
 	let winner;
 
 	for (const combination of WINNING_COMBINATIONS) {
@@ -51,6 +38,34 @@ function App() {
 			winner = firstSquareSymbol;
 		}
 	}
+
+	return winner;
+}
+
+function gameBoardDerive(gameTurns) {
+	let gameBoard = [...initialGameBoard.map((array) => [...array])];
+
+	for (const turn of gameTurns) {
+		const { square, player } = turn;
+		const { row, column } = square;
+
+		gameBoard[row][column] = player;
+	}
+
+	return gameBoard;
+}
+
+function App() {
+	const [namePlayers, setNamePlayers] = useState({
+		xIcon: "Player one",
+		circleIcon: "Player two",
+	});
+	const [gameTurns, setGameTurns] = useState([]);
+
+	const activePlayer = deriveTurnPlayer(gameTurns);
+	const gameBoard = gameBoardDerive(gameTurns);
+	const winner = winnerDerive(gameBoard);
+	const noWinner = gameTurns.length === 9 && !winner;
 
 	function selectSquareHandle(rowIndex, columnIndex) {
 		setGameTurns((prevTurns) => {
@@ -64,17 +79,14 @@ function App() {
 
 	function rematchHandle() {
 		setGameTurns([]);
-		winner = null;
 	}
-
-	const noWinner = gameTurns.length === 9 && !winner;
 
 	return (
 		<>
 			<main>
 				<div id="players">
-					<Player initialName={"Player one"} symbol={xIcon} isTurn={activePlayer === xIcon} />
-					<Player initialName={"Player two"} symbol={circleIcon} isTurn={activePlayer === circleIcon} />
+					<Player initialName={"Player one"} symbol={xIcon} isTurn={activePlayer === xIcon && !winner} />
+					<Player initialName={"Player two"} symbol={circleIcon} isTurn={activePlayer === circleIcon && !winner} />
 				</div>
 				<div id="game-board">
 					{winner || noWinner ? (
